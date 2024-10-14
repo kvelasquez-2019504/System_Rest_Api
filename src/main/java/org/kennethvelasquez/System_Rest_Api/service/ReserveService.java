@@ -9,4 +9,5 @@ public interface ReserveService {
     ResponseEntity getReserveById(int idReserve);
     ResponseEntity updateReserve(Reserve reserve, int idReserve);
     ResponseEntity deleteReserveById(int idReserve);
+    //ResponseEntity assignUserReserve(int idReserve, Long idUser);
 }

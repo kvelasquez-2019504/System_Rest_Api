@@ -11,7 +11,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/user/")
 public class UserController implements UserService {
-    private static ArrayList<User>listUsers = new ArrayList<User>();
+    private static ArrayList<User>listUsers;
+
+    public static ArrayList <User> getLisUsers() {
+        return listUsers;
+    }
+
+    public UserController(){
+        listUsers = new ArrayList<User>();
+    }
 
     @PostMapping("/")
     @Override
