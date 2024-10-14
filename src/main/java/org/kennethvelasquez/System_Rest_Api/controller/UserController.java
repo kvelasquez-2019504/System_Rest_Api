@@ -23,12 +23,7 @@ public class UserController implements UserService {
     @GetMapping("/")
     @Override
     public ResponseEntity getAllUsers() {
-        Optional<User> user = listUsers.stream().findAny();
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
-        }else{
-            return ResponseEntity.noContent().build();
-        }
+        return ResponseEntity.ok(listUsers.stream().toList());
     }
 
     @GetMapping("/{id}")
@@ -62,7 +57,6 @@ public class UserController implements UserService {
     public ResponseEntity deleteUserById(@PathVariable Long id) {
         Optional <User> userSearch = listUsers.stream().filter(userFind -> userFind.getId()==id).findFirst();
         if(userSearch.isPresent()) {
-            System.out.println(userSearch.get());
             listUsers.remove(userSearch.get());
             return ResponseEntity.ok("Se ha eliminado el usuario: "+userSearch.get());
         }else{
